@@ -193,6 +193,10 @@ export default function ConfigureBuilding() {
     router.back()
   }
 
+  const renderCount = () => {
+    return null
+  }
+
   return (
     <div className="flex flex-col h-screen w-full max-w-md mx-auto bg-[#F7F7F7]">
       <header className="bg-white px-4 py-3 flex items-center shadow-sm">
@@ -270,7 +274,6 @@ export default function ConfigureBuilding() {
                         >
                           <Edit className="h-4 w-4 text-gray-400" />
                         </Button>
-                        <span className="text-sm text-gray-400">设施设备类型数量：{location.count}</span>
                       </div>
                       <div className="flex items-center space-x-1">
                         <Button

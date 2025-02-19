@@ -10,10 +10,10 @@ import {
   Plus,
   Edit,
   ChevronLeft,
-  Settings,
   Trash2,
   ArrowUpDown,
   PlusCircle,
+  Settings,
 } from "lucide-react"
 import { useRouter } from "next/navigation"
 
@@ -47,28 +47,13 @@ export default function ProjectDetail() {
     router.push(`/edit-building?name=${encodeURIComponent(buildingName)}`)
   }
 
-  const handleConfigureBuilding = (buildingName: string) => {
-    router.push(`/configure-building?name=${encodeURIComponent(buildingName)}`)
-  }
-
   const handleEditFloor = (buildingName: string, floorName: string) => {
     router.push(`/edit-floor?building=${encodeURIComponent(buildingName)}&floor=${encodeURIComponent(floorName)}`)
-  }
-
-  const handleConfigureFloor = (buildingName: string, floorName: string) => {
-    console.log(`Configuring floor: ${buildingName} - ${floorName}`)
-    router.push(`/configure-floor?building=${encodeURIComponent(buildingName)}&floor=${encodeURIComponent(floorName)}`)
   }
 
   const handleEditLocation = (buildingName: string, floorName: string, locationName: string) => {
     router.push(
       `/edit-location?building=${encodeURIComponent(buildingName)}&floor=${encodeURIComponent(floorName)}&location=${encodeURIComponent(locationName)}`,
-    )
-  }
-
-  const handleConfigureLocation = (buildingName: string, floorName: string, locationName: string) => {
-    router.push(
-      `/configure-location?building=${encodeURIComponent(buildingName)}&floor=${encodeURIComponent(floorName)}&location=${encodeURIComponent(locationName)}`,
     )
   }
 
@@ -84,20 +69,12 @@ export default function ProjectDetail() {
     router.push(`/edit-surrounding?name=${encodeURIComponent(surroundingName)}`)
   }
 
-  const handleConfigureSurrounding = (surroundingName: string) => {
-    router.push(`/configure-surrounding?name=${encodeURIComponent(surroundingName)}`)
-  }
-
   const handleAddUndergroundParking = () => {
     router.push("/add-underground-parking")
   }
 
   const handleEditUndergroundParking = (parkingName: string) => {
     router.push(`/edit-underground-parking?name=${encodeURIComponent(parkingName)}`)
-  }
-
-  const handleConfigureUndergroundParking = (parkingName: string) => {
-    router.push(`/configure-underground-parking?name=${encodeURIComponent(parkingName)}`)
   }
 
   const handleDelete = (itemName: string) => {
@@ -167,7 +144,6 @@ export default function ProjectDetail() {
                   childCount={0}
                   defaultExpanded
                   onEdit={() => handleEditBuilding("A栋")}
-                  onConfigure={() => handleConfigureBuilding("A栋")}
                   onDelete={() => handleDelete("A栋")}
                   onAdd={() => handleAddToBuilding("A栋")}
                   isBuilding={true}
@@ -177,7 +153,6 @@ export default function ProjectDetail() {
                     label="天面"
                     childCount={0}
                     onEdit={() => handleEditFloor("A栋", "天面")}
-                    onConfigure={() => handleConfigureFloor("A栋", "天面")}
                     onDelete={() => handleDelete("天面")}
                     isFloor={true}
                     buildingName={"A栋"}
@@ -186,7 +161,6 @@ export default function ProjectDetail() {
                     label="3层"
                     childCount={0}
                     onEdit={() => handleEditFloor("A栋", "3层")}
-                    onConfigure={() => handleConfigureFloor("A栋", "3层")}
                     onDelete={() => handleDelete("3层")}
                     isFloor={true}
                     buildingName={"A栋"}
@@ -195,7 +169,6 @@ export default function ProjectDetail() {
                     label="2层"
                     childCount={0}
                     onEdit={() => handleEditFloor("A栋", "2层")}
-                    onConfigure={() => handleConfigureFloor("A栋", "2层")}
                     onDelete={() => handleDelete("2层")}
                     isFloor={true}
                     buildingName={"A栋"}
@@ -205,7 +178,6 @@ export default function ProjectDetail() {
                     childCount={4}
                     defaultExpanded
                     onEdit={() => handleEditFloor("A栋", "1层")}
-                    onConfigure={() => handleConfigureFloor("A栋", "1层")}
                     onDelete={() => handleDelete("1层")}
                     isFloor={true}
                     buildingName="A栋"
@@ -215,7 +187,6 @@ export default function ProjectDetail() {
                       childCount={3}
                       defaultExpanded
                       onEdit={() => handleEditLocation("A栋", "1层", "架空层")}
-                      onConfigure={() => handleConfigureLocation("A栋", "1层", "架空层")}
                       onDelete={() => handleDelete("架空层")}
                       buildingName="A栋"
                       floorName="1层"
@@ -228,7 +199,6 @@ export default function ProjectDetail() {
                       label="大堂"
                       childCount={0}
                       onEdit={() => handleEditLocation("A栋", "1层", "大堂")}
-                      onConfigure={() => handleConfigureLocation("A栋", "1层", "大堂")}
                       onDelete={() => handleDelete("大堂")}
                       buildingName="A栋"
                       floorName="1层"
@@ -237,7 +207,6 @@ export default function ProjectDetail() {
                       label="电梯前室"
                       childCount={0}
                       onEdit={() => handleEditLocation("A栋", "1层", "电梯前室")}
-                      onConfigure={() => handleConfigureLocation("A栋", "1层", "电梯前室")}
                       onDelete={() => handleDelete("电梯前室")}
                       buildingName="A栋"
                       floorName="1层"
@@ -246,7 +215,6 @@ export default function ProjectDetail() {
                       label="电梯轿厢"
                       childCount={0}
                       onEdit={() => handleEditLocation("A栋", "1层", "电梯轿厢")}
-                      onConfigure={() => handleConfigureLocation("A栋", "1层", "电梯轿厢")}
                       onDelete={() => handleDelete("电梯轿厢")}
                       buildingName="A栋"
                       floorName="1层"
@@ -256,7 +224,6 @@ export default function ProjectDetail() {
                     label="B1"
                     childCount={0}
                     onEdit={() => handleEditFloor("A栋", "B1")}
-                    onConfigure={() => handleConfigureFloor("A栋", "B1")}
                     onDelete={() => handleDelete("B1")}
                     isFloor={true}
                     buildingName={"A栋"}
@@ -265,7 +232,6 @@ export default function ProjectDetail() {
                     label="B2"
                     childCount={0}
                     onEdit={() => handleEditFloor("A栋", "B2")}
-                    onConfigure={() => handleConfigureFloor("A栋", "B2")}
                     onDelete={() => handleDelete("B2")}
                     isFloor={true}
                     buildingName={"A栋"}
@@ -275,7 +241,6 @@ export default function ProjectDetail() {
                   label="B栋"
                   childCount={0}
                   onEdit={() => handleEditBuilding("B栋")}
-                  onConfigure={() => handleConfigureBuilding("B栋")}
                   onDelete={() => handleDelete("B栋")}
                   onAdd={() => handleAddToBuilding("B栋")}
                   isBuilding={true}
@@ -285,7 +250,6 @@ export default function ProjectDetail() {
                   label="C栋"
                   childCount={0}
                   onEdit={() => handleEditBuilding("C栋")}
-                  onConfigure={() => handleConfigureBuilding("C栋")}
                   onDelete={() => handleDelete("C栋")}
                   onAdd={() => handleAddToBuilding("C栋")}
                   isBuilding={true}
@@ -321,7 +285,6 @@ export default function ProjectDetail() {
                   childCount={4}
                   defaultExpanded
                   onEdit={() => handleEditSurrounding("一期外围")}
-                  onConfigure={() => handleConfigureSurrounding("一期外围")}
                   onDelete={() => handleDelete("一期外围")}
                   isSurroundingOrParking={true}
                   buildingName={"一期外围"}
@@ -330,7 +293,6 @@ export default function ProjectDetail() {
                     label="车行道路"
                     childCount={0}
                     onEdit={() => handleEditLocation("一期外围", "车行道路", "车行道路")}
-                    onConfigure={() => handleConfigureLocation("一期外围", "车行道路", "车行道路")}
                     onDelete={() => handleDelete("车行道路")}
                     buildingName={"一期外围"}
                     floorName={"车行道路"}
@@ -339,7 +301,6 @@ export default function ProjectDetail() {
                     label="人行道路"
                     childCount={0}
                     onEdit={() => handleEditLocation("一期外围", "人行道路", "人行道路")}
-                    onConfigure={() => handleConfigureLocation("一期外围", "人行道路", "人行道路")}
                     onDelete={() => handleDelete("人行道路")}
                     buildingName={"一期外围"}
                     floorName={"人行道路"}
@@ -348,7 +309,6 @@ export default function ProjectDetail() {
                     label="车行出入口"
                     childCount={0}
                     onEdit={() => handleEditLocation("一期外围", "车行出入口", "车行出入口")}
-                    onConfigure={() => handleConfigureLocation("一期外围", "车行出入口", "车行出入口")}
                     onDelete={() => handleDelete("车行出入口")}
                     buildingName={"一期外围"}
                     floorName={"车行出入口"}
@@ -357,7 +317,6 @@ export default function ProjectDetail() {
                     label="人行出入口"
                     childCount={0}
                     onEdit={() => handleEditLocation("一期外围", "人行出入口", "人行出入口")}
-                    onConfigure={() => handleConfigureLocation("一期外围", "人行出入口", "人行出入口")}
                     onDelete={() => handleDelete("人行出入口")}
                     buildingName={"一期外围"}
                     floorName={"人行出入口"}
@@ -367,7 +326,6 @@ export default function ProjectDetail() {
                   label="二期外围"
                   childCount={0}
                   onEdit={() => handleEditSurrounding("二期外围")}
-                  onConfigure={() => handleConfigureSurrounding("二期外围")}
                   onDelete={() => handleDelete("二期外围")}
                   isSurroundingOrParking={true}
                   buildingName={"二期外围"}
@@ -402,7 +360,6 @@ export default function ProjectDetail() {
                   childCount={3}
                   defaultExpanded
                   onEdit={() => handleEditUndergroundParking("B1")}
-                  onConfigure={() => handleConfigureUndergroundParking("B1")}
                   onDelete={() => handleDelete("B1")}
                   isSurroundingOrParking={true}
                   buildingName={"B1"}
@@ -411,7 +368,6 @@ export default function ProjectDetail() {
                     label="防火分区1"
                     childCount={0}
                     onEdit={() => handleEditLocation("B1", "防火分区1", "防火分区1")}
-                    onConfigure={() => handleConfigureLocation("B1", "防火分区1", "防火分区1")}
                     onDelete={() => handleDelete("防火分区1")}
                     buildingName={"B1"}
                     floorName={"防火分区1"}
@@ -422,7 +378,6 @@ export default function ProjectDetail() {
                     label="防火分区2"
                     childCount={0}
                     onEdit={() => handleEditLocation("B1", "防火分区2", "防火分区2")}
-                    onConfigure={() => handleConfigureLocation("B1", "防火分区2", "防火分区2")}
                     onDelete={() => handleDelete("防火分区2")}
                     buildingName={"B1"}
                     floorName={"防火分区2"}
@@ -433,7 +388,6 @@ export default function ProjectDetail() {
                     label="防火分区3"
                     childCount={0}
                     onEdit={() => handleEditLocation("B1", "防火分区3", "防火分区3")}
-                    onConfigure={() => handleConfigureLocation("B1", "防火分区3", "防火分区3")}
                     onDelete={() => handleDelete("防火分区3")}
                     buildingName={"B1"}
                     floorName={"防火分区3"}
@@ -445,7 +399,6 @@ export default function ProjectDetail() {
                   label="B2"
                   childCount={0}
                   onEdit={() => handleEditUndergroundParking("B2")}
-                  onConfigure={() => handleConfigureUndergroundParking("B2")}
                   onDelete={() => handleDelete("B2")}
                   isSurroundingOrParking={true}
                   buildingName={"B2"}
@@ -481,7 +434,6 @@ function TreeItem({
   children,
   defaultExpanded = false,
   onEdit,
-  onConfigure,
   onDelete,
   onAdd,
   isBuilding = false,
@@ -496,7 +448,6 @@ function TreeItem({
   children?: React.ReactNode
   defaultExpanded?: boolean
   onEdit?: () => void
-  onConfigure?: () => void
   onDelete?: () => void
   onAdd?: () => void
   isBuilding?: boolean
@@ -510,20 +461,7 @@ function TreeItem({
   const hasChildren = Boolean(children)
 
   const renderCount = () => {
-    if (isBuilding) return null
-    const countText = isFloor || isSurroundingOrParking ? `点位数量：${childCount}` : `设施设备类型数量：${childCount}`
-    return (
-      <span className="ml-2 text-sm text-gray-500">
-        {countText.split(childCount.toString()).map((part, index, array) => (
-          <React.Fragment key={index}>
-            {part}
-            {index < array.length - 1 && (
-              <span className={childCount === 0 ? "text-red-500 font-medium" : "text-gray-500"}>{childCount}</span>
-            )}
-          </React.Fragment>
-        ))}
-      </span>
-    )
+    return null
   }
 
   return (
@@ -544,7 +482,6 @@ function TreeItem({
           )}
           <span className="text-gray-700 flex items-center">
             <span className="font-medium">{label}</span>
-            {renderCount()}
           </span>
         </div>
         <div className="flex items-center space-x-2">
@@ -556,19 +493,6 @@ function TreeItem({
           {onEdit && (
             <Button variant="ghost" size="sm" className="h-6 w-6 p-0" onClick={onEdit}>
               <Edit className="h-4 w-4 text-gray-400" />
-            </Button>
-          )}
-          {onConfigure && (
-            <Button
-              variant="ghost"
-              size="sm"
-              className="h-6 w-6 p-0"
-              onClick={(e) => {
-                e.stopPropagation()
-                onConfigure()
-              }}
-            >
-              <Settings className="h-4 w-4 text-gray-400" />
             </Button>
           )}
           {onDelete && (

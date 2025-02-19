@@ -15,6 +15,13 @@ interface LocationType {
   isExpanded?: boolean
 }
 
+interface Building {
+  id: string
+  name: string
+  isExpanded: boolean
+  floors: { id: string; name: string }[]
+}
+
 export default function AddStandardFloor() {
   const router = useRouter()
   const [floorName, setFloorName] = useState("")
@@ -63,6 +70,28 @@ export default function AddStandardFloor() {
   const [facilityTypes, setFacilityTypes] = useState<string[]>(["地面", "天面", "照明灯", "防火门"])
   const [isAddLocationDialogOpen, setIsAddLocationDialogOpen] = useState(false)
   const [newLocationName, setNewLocationName] = useState("")
+  const [buildings, setBuildings] = useState<Building[]>([
+    {
+      id: "1",
+      name: "A栋",
+      isExpanded: false,
+      floors: [
+        { id: "1-1", name: "1层" },
+        { id: "1-2", name: "2层" },
+        { id: "1-3", name: "3层" },
+      ],
+    },
+    {
+      id: "2",
+      name: "B栋",
+      isExpanded: false,
+      floors: [
+        { id: "2-1", name: "1层" },
+        { id: "2-2", name: "2层" },
+      ],
+    },
+  ])
+  const [selectedFloors, setSelectedFloors] = useState<string[]>([])
 
   const handleBack = () => {
     router.back()
@@ -137,8 +166,22 @@ export default function AddStandardFloor() {
     setFacilityTypes(facilityTypes.filter((_, i) => i !== index))
   }
 
+  const toggleBuildingExpand = (buildingId: string) => {
+    setBuildings(
+      buildings.map((building) =>
+        building.id === buildingId ? { ...building, isExpanded: !building.isExpanded } : building,
+      ),
+    )
+  }
+
+  const toggleFloorSelection = (floorId: string) => {
+    setSelectedFloors((prevSelected) =>
+      prevSelected.includes(floorId) ? prevSelected.filter((id) => id !== floorId) : [...prevSelected, floorId],
+    )
+  }
+
   const handleSubmit = () => {
-    console.log("标准层添加:", { floorName, floorArea, locations, facilityTypes })
+    console.log("标准层添加:", { floorName, floorArea, locations, facilityTypes, selectedFloors })
     router.back()
   }
 
@@ -220,7 +263,6 @@ export default function AddStandardFloor() {
                       >
                         <Edit className="h-4 w-4 text-gray-400" />
                       </Button>
-                      <span className="text-sm text-gray-400">设施设备类型数量：{location.count}</span>
                     </div>
                     <div className="flex items-center space-x-1">
                       <Button
@@ -297,6 +339,42 @@ export default function AddStandardFloor() {
                   <Button variant="ghost" size="sm" onClick={() => removeFacilityType(index)} className="h-6 w-6 p-0">
                     <Trash2 className="h-4 w-4 text-gray-400" />
                   </Button>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="space-y-6 bg-white rounded-lg p-6">
+            <h2 className="text-[17px] font-normal">应用楼层</h2>
+            <div className="space-y-2">
+              {buildings.map((building) => (
+                <div key={building.id} className="space-y-2">
+                  <div
+                    className="flex items-center justify-between cursor-pointer"
+                    onClick={() => toggleBuildingExpand(building.id)}
+                  >
+                    <span className="font-medium">{building.name}</span>
+                    {building.isExpanded ? (
+                      <ChevronDown className="h-5 w-5 text-gray-500" />
+                    ) : (
+                      <ChevronRight className="h-5 w-5 text-gray-500" />
+                    )}
+                  </div>
+                  {building.isExpanded && (
+                    <div className="pl-4 space-y-2">
+                      {building.floors.map((floor) => (
+                        <div key={floor.id} className="flex items-center">
+                          <input
+                            type="checkbox"
+                            id={floor.id}
+                            checked={selectedFloors.includes(floor.id)}
+                            onChange={() => toggleFloorSelection(floor.id)}
+                            className="mr-2"
+                          />
+                          <label htmlFor={floor.id}>{floor.name}</label>
+                        </div>
+                      ))}
+                    </div>
+                  )}
                 </div>
               ))}
             </div>
