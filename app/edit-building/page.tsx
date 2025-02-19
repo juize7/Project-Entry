@@ -321,7 +321,6 @@ export default function EditBuilding() {
 
           {/* 配置楼栋部分 */}
           <section className="bg-white rounded-lg p-4 space-y-6">
-            <h2 className="text-lg font-semibold">配置楼栋</h2>
             <div className="space-y-4">
               <div>
                 <label htmlFor="standardFloor" className="block text-sm font-medium text-gray-700 mb-1">
